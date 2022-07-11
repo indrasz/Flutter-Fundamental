@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class StreamConceptPage extends StatelessWidget {
+  const StreamConceptPage({Key? key}) : super(key: key);
 
   Stream<int> countStream() async* {
     for(int i = 1; i <= 10; i++ ){
-    await Future.delayed(const Duration(seconds: 1));
-    yield i;
-  } 
+      await Future.delayed(const Duration(seconds: 1));
+      yield i;
+    } 
   }
 
   @override
@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Center(
-          child: const Text("Stream Apps"),
+          child: Text("Stream Apps"),
         )
       ),
 
