@@ -45,25 +45,23 @@ class _HomePageState extends State<HomePage> {
 
   Position? _position;
 
-  void _getCurrentLocation() async {
+  void _getCurrentLocation() async{
     Position position = await _determinePosition();
-    setState(() {
-      _position = position;
-    });
   }
 
-  Future<Position> _determinePosition() async {
+  Future<Position> _determinePosition() async{
     LocationPermission permission;
     permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
+    if(permission == LocationPermission.denied){
       permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return Future.error('Location permissions are denied');
+      if(permission == LocationPermission.denied){
+        return Future.error('location permissions are denied');
       }
     }
-    if (permission == LocationPermission.deniedForever) {
+    if(permission == LocationPermission.deniedForever){
       return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
+        'Location permission are permanently denied, we cannot request permissions.'
+      );
     }
     return await Geolocator.getCurrentPosition();
   }
