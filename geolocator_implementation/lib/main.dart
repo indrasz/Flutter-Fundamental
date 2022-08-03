@@ -23,25 +23,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text("Geolocator Demo"),
-      ),
-      body: Center(
-        child: _position != null
-            ? Text('Current Location: \n' + _position.toString())
-            : const Text('No location data'),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _getCurrentLocation,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
-    );
-  }
 
   Position? _position;
 
@@ -64,5 +45,26 @@ class _HomePageState extends State<HomePage> {
       );
     }
     return await Geolocator.getCurrentPosition();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Geolocator Demo"),
+      ),
+      body: Center(
+        child: _position != null
+            ? Text('Current Location: \n' + _position.toString())
+            : const Text('No location data'),
+           
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _getCurrentLocation,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ),
+    );
   }
 }
